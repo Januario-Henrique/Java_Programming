@@ -1,0 +1,103 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.marriott.view;
+import com.marriott.dao.ClientDao;
+import com.marriott.model.Client;
+import java.util.*;
+
+/**
+ *
+ * @author LEGACY TECHNOLOGY
+ */
+public class App {
+    public static void main(String[] args){
+    boolean condition=true;
+    String name;
+    String nationalId;
+    String phoneNumber;
+    String email;
+    int age;
+    
+    while(condition){
+        System.out.println("Hotel Management System");
+        System.out.println("===========================");
+        System.out.println("1.Register Client ");
+        System.out.println("2.Update Client");
+        System.out.println("3.Delete Client");
+        System.out.println("4.Display all Client");
+        System.out.println("5. Find Client By id");
+        System.out.println("0.Exit");
+        System.out.println("-----------------------");
+        System.out.print("Chose: ");
+        Scanner input= new Scanner(System.in);
+        
+        int choice = input.nextInt();
+    
+        switch(choice){
+            case 1:
+                System.out.println("Register Client");
+                System.out.println("----------------------");
+                System.out.print("Enter client Id: ");
+                nationalId = input.next();
+                System.out.print("Enter client name: ");
+                name= input.next();
+                System.out.print("Enter client phone number: ");
+                phoneNumber = input.next();
+                System.out.print("Enter client Email: ");
+                email= input.next();
+                System.out.print("Enter client Age: ");
+                age=input.nextInt();
+
+                //seding data to model
+                Client clientObj = new Client();
+                clientObj.setNationalId(nationalId);
+                clientObj.setName(name);
+                clientObj.setPhoneNumber(phoneNumber);
+                clientObj.setEmail(email);
+                clientObj.setAge(age);
+                //sending data from model to DAO
+
+                ClientDao dao= new ClientDao();
+                
+                int rowAffected = dao.registerClient(clientObj);
+                
+                if(rowAffected>0){
+                    System.out.println("Data saved sucessfull");
+                }else{
+                    System.out.println("Data not saved");
+                    
+                }
+                
+                
+                
+                break;
+            case 2:
+                System.out.println("Option 1 selected");
+                break;
+            case 3:
+                System.out.println("Option 1 selected");
+                break;
+            case 4:
+                    System.out.println("Option 1 selected");
+                break;
+            case 5:
+                break;
+            case 0:
+                System.out.println("Thank u for using this System");
+                System.exit(0);
+        
+        
+        }
+    
+    }
+    
+    
+    
+    
+    
+    
+    }
+}

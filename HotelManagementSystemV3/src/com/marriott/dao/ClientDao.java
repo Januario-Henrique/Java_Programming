@@ -13,7 +13,7 @@ import java.sql.PreparedStatement;
 
 /**
  *
- * @author LEGACY TECHNOLOGY
+ * @author Januario Henrique
  */
 public class ClientDao {
     // global variable 

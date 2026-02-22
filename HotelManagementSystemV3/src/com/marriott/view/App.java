@@ -75,7 +75,29 @@ public class App {
                 
                 break;
             case 2:
-                System.out.println("Option 1 selected");
+                
+                System.out.println("Option 2 selected");
+                System.out.print("Enter Id to be update: ");
+                nationalId=input.next();
+                System.out.println("Enter new client´s name: ");
+                name=input.next();
+                System.out.println("Enter new client´s phone number:");
+                phoneNumber=input.next();
+                System.out.println("Enter new client´s email: ");
+                email=input.next();
+                System.out.println("Enter new client´s age: ");
+                age=input.nextInt();
+
+
+                //sending data to model
+                Client UpdateClient= new Client();
+
+                UpdateClient.setAge(age);
+                UpdateClient.setEmail(email);
+                UpdateClient.setNationalId(nationalId);
+                UpdateClient.setPhoneNumber(phoneNumber);
+
+
                 break;
             case 3:
                 System.out.println("Option 1 selected");

@@ -50,6 +50,31 @@ public class ClientDao {
         }
         
         //update
+        public int updateClient(Client clientObj){
+            //update
+            try{
+                //step 1: connect with database
+                Connection con= DriverManager.getConnection(jdbcUrl,dbUsername,dbPassword);
+                //step2: Prepare statement
+                String sql="UPDATE client SET name=?,phoneNumber=?,email=?,age=? WHERE  id=?";
+
+                PreparedStatement pst= con.prepareStatement(sql);
+                pst.setString(1,clientObj.getName());
+                pst.setString(2, clientObj.getPhoneNumber());
+                pst.setString(3, clientObj.getEmail());
+                pst.setInt(4, clientObj.getAge());
+
+                int rowAffected = pst.executeUpdate();
+
+
+                con.close();
+                return 1;
+            }catch(Exception ex){
+                System.out.println("Error:"+ex.getMessage());
+                ex.printStackTrace();
+                return 0;
+            }
+        }
         //delete
         //read
     }

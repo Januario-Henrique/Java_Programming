@@ -119,7 +119,14 @@ public class App {
                 }
                 break;
             case 4:
-                    System.out.println("Option 1 selected");
+                    
+                System.out.println("Option Display All selected");
+
+                System.out.println("-----------------------------------------------------------------------");
+                System.out.printf("%-5s %-15s %-15s %-25s %-5s\n",
+                        "ID", "NAME", "PHONE", "EMAIL", "AGE");
+                System.out.println("-----------------------------------------------------------------------");
+
                 break;
             case 5:
                 break;

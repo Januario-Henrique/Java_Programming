@@ -96,5 +96,46 @@ public class ClientDao {
 
         }
         //read
+        public int readClient(){
+            try{
+                Connection con= DriverManager.getConnection(jdbcUrl,dbUsername,dbPassword);
+
+                String sql="SELECT * FROM client";
+
+                PreparedStatement pst= con.prepareStatement(sql);
+
+                ResultSet rs= pst.executeQuery();
+
+                boolean hasData= false;
+
+                while(rs.next()){
+                    hasData= true;
+
+                    System.out.printf("%-5s %-15s %-15s %-25s %-5d",
+                            rs.getString("id"),
+                            rs.getString("name"),
+                            rs.getString("phoneNumber"),
+                            rs.getString("email"),
+                            rs.getInt("age")
+                    );
+
+
+
+                }
+                if(!hasData){
+                    System.out.println("No Client Found ");
+
+                }
+                con.close();
+                return 1;
+            }catch(Exception ex){
+                System.out.println("ERROR:"+ex.getMessage());
+                ex.printStackTrace();
+                return 0;
+
+            }
+
+
+        }
     }
 }

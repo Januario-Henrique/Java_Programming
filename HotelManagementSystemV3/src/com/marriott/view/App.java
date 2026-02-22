@@ -119,7 +119,7 @@ public class App {
                 }
                 break;
             case 4:
-                    
+
                 System.out.println("Option Display All selected");
 
                 System.out.println("-----------------------------------------------------------------------");
@@ -129,6 +129,7 @@ public class App {
 
                 break;
             case 5:
+                
                 break;
             case 0:
                 System.out.println("Thank u for using this System");

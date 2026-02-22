@@ -48,6 +48,7 @@ public class ClientDao {
             ex.printStackTrace();
             return 0;
         }
+    }
         
         //update
         public int updateClient(Client clientObj){
@@ -75,6 +76,7 @@ public class ClientDao {
                 return 0;
             }
         }
+
         //delete
         public int deleteClient(Client clientObj){
             try{
@@ -137,5 +139,32 @@ public class ClientDao {
 
 
         }
-    }
+        public int findClient(Client clientObj){
+            try{
+                Connection con= DriverManager.getConnection(jdbcUrl,dbUsername,dbPassword);
+
+                String sql="SELECT * FROM client WHERE id=?";
+
+                PreparedStatement pst= con.prepareStatement(sql);
+                pst.setString(1, clientObj.getNationalId());
+                ResultSet rs= pst.executeQuery();
+
+                if(rs.next()){
+                    System.out.println("Client ID found");
+                }else{
+                    System.out.println("Client NOT ID found");
+                }
+
+                con.close();
+                return 1;
+            }catch(Exception ex){
+                System.out.println("Error: "+ex.getMessage());
+                ex.printStackTrace();
+                return 0;
+
+            }
+
+
+        }
+
 }

@@ -10,7 +10,7 @@ import java.util.*;
 
 /**
  *
- * @author LEGACY TECHNOLOGY
+ * @author Januario Henrique
  */
 public class App {
     public static void main(String[] args){

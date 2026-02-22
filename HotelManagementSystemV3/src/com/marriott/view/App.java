@@ -75,7 +75,7 @@ public class App {
                 
                 break;
             case 2:
-                
+
                 System.out.println("Option 2 selected");
                 System.out.print("Enter Id to be update: ");
                 nationalId=input.next();
@@ -100,7 +100,23 @@ public class App {
 
                 break;
             case 3:
-                System.out.println("Option 1 selected");
+                System.out.println("Option Delete selected");
+                System.out.print("Enter client's Id: ");
+                nationalId=input.next();
+
+                Client deleteClient= new Client();
+
+                deleteClient.setNationalId(nationalId);
+
+                ClientDao delDao= new ClientDao();
+
+                rowAffected=delDao.deleteClient(deleteClient);
+                if(rowAffected>0){
+                    System.out.println("CLient delected");
+                }else{
+
+                    System.out.println("CLient ID not FOUND");
+                }
                 break;
             case 4:
                     System.out.println("Option 1 selected");

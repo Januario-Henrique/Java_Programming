@@ -76,6 +76,25 @@ public class ClientDao {
             }
         }
         //delete
+        public int deleteClient(Client clientObj){
+            try{
+                Connection con= DriverManager.getConnection(jdbcUrl,dbUsername,dbPassword);
+                String sql="DELETE FROM client WHERE id=?";
+
+                PreparedStatement pst= con.prepareStatement(sql);
+
+                pst.setString(1,clientObj.getNationalId());
+
+
+                con.close();
+                return 1;
+            }catch(Exception ex){
+                System.out.println("Error: "+ ex.getMessage());
+                ex.printStackTrace();
+                return 0;
+            }
+
+        }
         //read
     }
 }

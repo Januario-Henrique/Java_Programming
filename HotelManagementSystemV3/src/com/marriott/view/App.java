@@ -75,7 +75,6 @@ public class App {
                 
                 break;
             case 2:
-
                 System.out.println("Option 2 selected");
                 System.out.print("Enter Id to be update: ");
                 nationalId=input.next();
@@ -87,48 +86,66 @@ public class App {
                 email=input.next();
                 System.out.println("Enter new client´s age: ");
                 age=input.nextInt();
-
-
+                
+                
                 //sending data to model
-                Client UpdateClient= new Client();
+                 Client updateClient = new Client();
+                    updateClient.setNationalId(nationalId);
+                    updateClient.setName(name);
+                    updateClient.setPhoneNumber(phoneNumber);
+                    updateClient.setEmail(email);
+                    updateClient.setAge(age);
 
-                UpdateClient.setAge(age);
-                UpdateClient.setEmail(email);
-                UpdateClient.setNationalId(nationalId);
-                UpdateClient.setPhoneNumber(phoneNumber);
+                    ClientDao updateDao = new ClientDao();
+                    int updateResult = updateDao.updateClient(updateClient);
 
-
+                    if(updateResult > 0){
+                        System.out.println("Client updated successfully");
+                    }else{
+                        System.out.println("Update failed");
+                    }
+               
                 break;
             case 3:
                 System.out.println("Option Delete selected");
                 System.out.print("Enter client's Id: ");
                 nationalId=input.next();
-
+                
                 Client deleteClient= new Client();
-
+                
                 deleteClient.setNationalId(nationalId);
-
+                
                 ClientDao delDao= new ClientDao();
-
+                
                 rowAffected=delDao.deleteClient(deleteClient);
                 if(rowAffected>0){
                     System.out.println("CLient delected");
                 }else{
-
+                    
                     System.out.println("CLient ID not FOUND");
                 }
                 break;
             case 4:
-
-                System.out.println("Option Display All selected");
-
-                System.out.println("-----------------------------------------------------------------------");
-                System.out.printf("%-5s %-15s %-15s %-25s %-5s\n",
-                        "ID", "NAME", "PHONE", "EMAIL", "AGE");
-                System.out.println("-----------------------------------------------------------------------");
-
+                    System.out.println("Option Display All selected");
+                    
+                    System.out.println("-----------------------------------------------------------------------");
+                    System.out.printf("%-5s %-15s %-15s %-25s %-5s\n", 
+                                "ID", "NAME", "PHONE", "EMAIL", "AGE");
+                    System.out.println("-----------------------------------------------------------------------");
+                    ClientDao readDao = new ClientDao();
+                    readDao.readClient();   
                 break;
             case 5:
+                System.out.println("Option 5.Find by Id Selected! ");
+                System.out.print("Enter CLIENT'S Id: ");
+                nationalId=input.next();
+                
+                Client findClient = new Client();
+                findClient.setNationalId(nationalId);
+
+                ClientDao findDao = new ClientDao();
+                findDao.findClient(findClient);
+
                 
                 break;
             case 0:
@@ -140,10 +157,6 @@ public class App {
     
     }
     
-    
-    
-    
-    
-    
+
     }
 }
